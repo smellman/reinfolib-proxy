@@ -17,3 +17,7 @@ uv sync --frozen --no-cache
 ```bash
 uv run fastapi run main.py --port 8080 --host 0.0.0.0
 ```
+
+https://dev.smellman.org/reinfolib-proxy/proxy/ にて動作をしています。
+
+定期的にシャットダウンされるので注意をしてください。
