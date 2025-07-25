@@ -24,7 +24,7 @@ async def lifespan(app: FastAPI):
     finally:
         logger.info(f"{APP_NAME} is shutting down...")
 
-app = FastAPI(lifespan=lifespan)
+app = FastAPI(lifespan=lifespan, root_path="/reinfolib-proxy")
 
 app.add_middleware(
     CORSMiddleware,
