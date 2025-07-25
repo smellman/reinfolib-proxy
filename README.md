@@ -9,21 +9,11 @@
 ### ライブラリのインストール
 
 ```bash
-python3.12 -m venv venv
-source venv/bin/activate
-pip install -r requirements.txt
+uv sync --frozen --no-cache
 ```
-
-### API Keyの設定
-
-```bash
-vim main.py
-```
-
-`API_KEY`にAPI Keyを設定してください。
 
 ### ライブラリの実行
 
 ```bash
-uvicorn main:app --reload
+uv run fastapi run main.py --port 8080 --host 0.0.0.0
 ```

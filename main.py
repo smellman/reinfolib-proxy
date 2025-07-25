@@ -15,7 +15,6 @@ logging.basicConfig(
 logger = logging.getLogger(__name__)
 
 APP_NAME = 'reinfolib-proxy'
-API_KEY = 'your-api-key-here'
 
 @asynccontextmanager
 async def lifespan(app: FastAPI):
@@ -44,8 +43,9 @@ async def add_logging(request: Request, call_next):
 
 @app.get("/proxy/{path:path}")
 async def proxy(path: str, request:Request,  response: Response):
+    api_key = request.headers.get('Ocp-Apim-Subscription-Key', '')
     headers = {
-        'Ocp-Apim-Subscription-Key': API_KEY
+        'Ocp-Apim-Subscription-Key': api_key
     }
     async with httpx.AsyncClient() as client:
         proxy = await client.get(f"https://www.reinfolib.mlit.go.jp/{path}", params=request.query_params, headers=headers)
